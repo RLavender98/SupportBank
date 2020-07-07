@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System;
+using NLog;
 
 namespace SupportBank
 {
-    public class UserInteraction
+    public class UserInterface
     {
+        private static readonly ILogger logger = LogManager.GetCurrentClassLogger();
         public void UserInteract(List<Account> accountList, List<Transaction> transactionList)
         {
             string command = Console.ReadLine();
