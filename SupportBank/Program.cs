@@ -21,7 +21,15 @@ namespace SupportBank
                 {
                     Console.WriteLine(account.AccountName+" owes:"+account.Owes);
                 }
-
+            else if (command.IndexOf("List ") == 0)
+            {
+                command = command.Remove(0, 5);
+                foreach (var transaction in fileData)
+                {
+                    if (transaction.Payee == command || transaction.Payer == command)
+                        Console.WriteLine(transaction.AllInfo);
+                }
+            }
         }
 
         public static List<Transaction> LoadData()

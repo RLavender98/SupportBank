@@ -4,6 +4,8 @@ namespace SupportBank
 {
     class Transaction
     {
+        public string AllInfo;
+        public string Date;
         public string Payer;
         public string Payee;
         public string Narrative;
@@ -11,7 +13,9 @@ namespace SupportBank
 
         public void BuildTransaction(string line)
         {
+            AllInfo = line;
             string[] splitLine = line.Split(',');
+            Date = splitLine[0];
             Payer = splitLine[1];
             Payee = splitLine[2];
             Narrative = splitLine[3];
