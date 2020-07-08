@@ -22,20 +22,22 @@ namespace SupportBank
                 string payer = node.ChildNodes[2].ChildNodes[0].InnerText;
                 string payee = node.ChildNodes[2].ChildNodes[1].InnerText;
                 
+                
                 if (!Double.TryParse(amountish, out var amount))
                 {
                     string message = "Invalid Amount in SupportTransaction Node  " + nodeCounter + " of "+path+". Transaction skipped.";
                     Console.WriteLine(message);
                     logger.Debug(message);
                 }
-                else if (!DateTime.TryParse(dateish, out var date))
+                else if (!Double.TryParse(dateish, out var weirddate))
                 {
-                    string message = "Invalid Date in SupportTransaction Node " + nodeCounter + " of "+path+". Transaction skipped.";
+                    string message = "Invalid Date in SupportTransaction Node  " + nodeCounter + " of "+path+". Transaction skipped.";
                     Console.WriteLine(message);
                     logger.Debug(message);
                 }
                 else
                 {
+                    DateTime date = DateTime.FromOADate(weirddate);
                     var transaction = new Transaction(date, payer, payee, narrative, amount);
                     transactions.Add(transaction); 
                 }
