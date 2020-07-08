@@ -1,27 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
 using NLog;
 
 namespace SupportBank
 {
-    
-    internal class FileReader
-    {    
+    internal class CsvReader
+    {
         private static readonly ILogger logger = LogManager.GetCurrentClassLogger();
-        private readonly JsonReader _jsonReader = new JsonReader();
-
-        public JsonReader JsonReader
-        {
-            get { return _jsonReader; }
-        }
-
-        public List<Transaction> ReadCsv(List<Transaction> transactions, string path)
+        public List<Transaction> ReadCsv(string path)
         {
             string[] fileData =
                 System.IO.File.ReadAllLines(path);
             var lineNumber = 1;
+            var transactions = new List<Transaction>();
             foreach (var line in fileData.Skip(1))
             {    
                 string[] splitLine = line.Split(',');
@@ -47,8 +39,8 @@ namespace SupportBank
                 }
                 lineNumber++;
             }
-            
-            logger.Info("Added "+ path+" to list of transactions.");
+
+            logger.Info("converted "+ path+" into a list of transactions.");
             return transactions;
         }
     }

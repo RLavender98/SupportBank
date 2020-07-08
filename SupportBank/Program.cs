@@ -14,18 +14,17 @@ namespace SupportBank
         {
             LoggingConfiguration();
 
-            var transactions = new List<Transaction>();
+            var allTransactions = new List<Transaction>();
             var fileReader = new FileReader();
-            transactions = fileReader.JsonReader.ReadJson(transactions,
-                @"C:\Users\rublav\Work\Training\SupportBank\Transactions2013.json");
-            transactions = fileReader.ReadCsv(transactions,
-                @"C:\Users\rublav\Work\Training\SupportBank\Transactions2014.txt");
-            transactions = fileReader.ReadCsv(transactions, @"C:\Users\rublav\Work\Training\SupportBank\DodgyTransactions2015.txt");
-            
-            var accountMaker= new AccountMaker();
-            var accountList = accountMaker.MakeAccountList(transactions);
+            //allTransactions.AddRange(fileReader.JsonReader.ReadJson(@"C:\Users\rublav\Work\Training\SupportBank\Transactions2013.json"));
+            //allTransactions.AddRange(fileReader.CsvReader.ReadCsv(@"C:\Users\rublav\Work\Training\SupportBank\Transactions2014.txt"));
+            //allTransactions.AddRange(fileReader.CsvReader.ReadCsv(@"C:\Users\rublav\Work\Training\SupportBank\DodgyTransactions2015.txt"));
             var userInterface = new UserInterface();
-            userInterface.UserInteract(accountList, transactions);
+            do
+            {
+                userInterface.UserInteract(allTransactions);
+            } while (true);
+
         }
 
         private static void LoggingConfiguration()
