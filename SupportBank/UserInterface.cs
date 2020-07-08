@@ -49,6 +49,10 @@ namespace SupportBank
                 {
                     fileReader = new JsonReader();
                 }
+                else if (command.EndsWith(".xml"))
+                {
+                    fileReader = new XmlReader();
+                }
 
                 if (fileReader != null)
                 {

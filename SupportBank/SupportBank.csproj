@@ -59,6 +59,7 @@
         <Compile Include="Transaction.cs" />
         <Compile Include="FileReader.cs" />
         <Compile Include="UserInterface.cs" />
+        <Compile Include="XmlReader.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />

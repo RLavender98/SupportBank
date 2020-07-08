@@ -13,7 +13,6 @@ namespace SupportBank
         public static void Main(string[] args)
         {
             LoggingConfiguration();
-
             
             //allTransactions.AddRange(fileReader.JsonReader.ReadJson(@"C:\Users\rublav\Work\Training\SupportBank\Transactions2013.json"));
             //allTransactions.AddRange(fileReader.CsvReader.ReadCsv(@"C:\Users\rublav\Work\Training\SupportBank\Transactions2014.txt"));
