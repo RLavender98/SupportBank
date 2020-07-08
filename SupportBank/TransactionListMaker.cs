@@ -8,11 +8,11 @@ namespace SupportBank
     internal class TransactionListMaker
     {    
         private static readonly ILogger logger = LogManager.GetCurrentClassLogger();
-        public List<Transaction> LoadData()
+        public List<Transaction> ReadCsv(List<Transaction> transactions, string path)
         {
             string[] fileData =
-                System.IO.File.ReadAllLines(@"C:\Users\rublav\Work\Training\SupportBank\DodgyTransactions2015.txt");
-            var transactions = new List<Transaction>();
+                System.IO.File.ReadAllLines(path);
+            
             foreach (var line in fileData.Skip(1))
             {
                 var transaction = new Transaction(line);

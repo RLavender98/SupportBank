@@ -17,13 +17,16 @@ namespace SupportBank
             config.AddTarget("File Logger", target);
             config.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, target));
             LogManager.Configuration = config;
-
+            
+            var transactions = new List<Transaction>();
             var transactionListMaker = new TransactionListMaker();
-            var transactionList = transactionListMaker.LoadData();
+            transactions = transactionListMaker.ReadCsv(transactions, @"C:\Users\rublav\Work\Training\SupportBank\DodgyTransactions2015.txt");
+            transactions = transactionListMaker.ReadCsv(transactions,
+                @"C:\Users\rublav\Work\Training\SupportBank\Transactions2014.txt");
             var accountMaker= new AccountMaker();
-            var accountList = accountMaker.MakeAccountList(transactionList);
+            var accountList = accountMaker.MakeAccountList(transactions);
             var userInterface = new UserInterface();
-            userInterface.UserInteract(accountList, transactionList);
+            userInterface.UserInteract(accountList, transactions);
         }
     }
 }
