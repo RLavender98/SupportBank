@@ -14,16 +14,15 @@ namespace SupportBank
         {
             LoggingConfiguration();
 
-            var allTransactions = new List<Transaction>();
-            var fileReader = new FileReader();
+            
             //allTransactions.AddRange(fileReader.JsonReader.ReadJson(@"C:\Users\rublav\Work\Training\SupportBank\Transactions2013.json"));
             //allTransactions.AddRange(fileReader.CsvReader.ReadCsv(@"C:\Users\rublav\Work\Training\SupportBank\Transactions2014.txt"));
             //allTransactions.AddRange(fileReader.CsvReader.ReadCsv(@"C:\Users\rublav\Work\Training\SupportBank\DodgyTransactions2015.txt"));
             var userInterface = new UserInterface();
-            do
+            while(true)
             {
-                userInterface.UserInteract(allTransactions);
-            } while (true);
+                userInterface.UserInteract(userInterface.AllTransactions);
+            }
 
         }
 

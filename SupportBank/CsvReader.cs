@@ -5,10 +5,10 @@ using NLog;
 
 namespace SupportBank
 {
-    internal class CsvReader
+    internal class CsvReader:FileReader
     {
         private static readonly ILogger logger = LogManager.GetCurrentClassLogger();
-        public List<Transaction> ReadCsv(string path)
+        public override List<Transaction> ReadFile(string path)
         {
             string[] fileData =
                 System.IO.File.ReadAllLines(path);
